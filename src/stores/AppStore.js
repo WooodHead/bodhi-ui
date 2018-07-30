@@ -10,6 +10,7 @@ import ResultSettingStore from './activitiesStores/ResultSetting';
 import FinalizeStore from './activitiesStores/Finalize';
 import WithdrawStore from './activitiesStores/Withdraw';
 import ActivityHistoryStore from './activitiesStores/ActivityHistoryStore';
+import FavoriteStore from './activitiesStores/FavoriteStore';
 import WalletStore from './wallet/WalletStore';
 import GlobalSnackbarStore from './components/GlobalSnackbarStore';
 import SelectAddressDialogStore from './components/SelectAddressDialogStore';
@@ -60,6 +61,7 @@ class AppStore {
         finalize: new FinalizeStore(this),
         withdraw: new WithdrawStore(this),
         history: new ActivityHistoryStore(this),
+        favorite: new FavoriteStore(this),
       };
       this.loading = false; // finishing loading
     });
