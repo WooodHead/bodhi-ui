@@ -2,6 +2,7 @@ import { observable, runInAction, action } from 'mobx';
 
 import GlobalStore from './GlobalStore';
 import UiStore from './UiStore';
+import FavoriteStore from './FavoriteStore';
 import RefreshingStore from './RefreshingStore';
 import AllEventsStore from './AllEventsStore';
 import QtumPredictionStore from './QtumPredictionStore';
@@ -10,7 +11,7 @@ import ResultSettingStore from './activitiesStores/ResultSetting';
 import FinalizeStore from './activitiesStores/Finalize';
 import WithdrawStore from './activitiesStores/Withdraw';
 import ActivityHistoryStore from './activitiesStores/ActivityHistoryStore';
-import FavoriteStore from './activitiesStores/FavoriteStore';
+import MyFavoriteStore from './activitiesStores/MyFavoriteStore';
 import WalletStore from './wallet/WalletStore';
 import GlobalSnackbarStore from './components/GlobalSnackbarStore';
 import SelectAddressDialogStore from './components/SelectAddressDialogStore';
@@ -27,6 +28,7 @@ class AppStore {
   ui = {}
   wallet = {}
   allEvents = {}
+  favorite = {}
   globalSnackbar = {}
   selectAddressDialog = {}
   walletUnlockDialog = {}
@@ -42,6 +44,7 @@ class AppStore {
     this.global = new GlobalStore(this);
     this.ui = new UiStore();
     this.wallet = new WalletStore(this);
+    this.favorite = new FavoriteStore(this);
     this.globalSnackbar = new GlobalSnackbarStore();
     this.selectAddressDialog = new SelectAddressDialogStore();
     this.walletUnlockDialog = new WalletUnlockDialogStore(this);
@@ -61,7 +64,7 @@ class AppStore {
         finalize: new FinalizeStore(this),
         withdraw: new WithdrawStore(this),
         history: new ActivityHistoryStore(this),
-        favorite: new FavoriteStore(this),
+        myFavorite: new MyFavoriteStore(this),
       };
       this.loading = false; // finishing loading
     });

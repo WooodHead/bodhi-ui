@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import cx from 'classnames';
 
+import FavoriteButton from './FavoriteButton';
 import EventWarning from '../EventWarning';
 import styles from './styles';
 import { getShortLocalDateTimeString, getEndTimeCountDownString } from '../../helpers/utility';
@@ -74,7 +75,7 @@ export default class EventCard extends PureComponent {
               {(unconfirmed || isPending) && <EventWarning id="str.pendingConfirmation" message="Pending Confirmation" />}
               {isUpcoming && <EventWarning id="str.upcoming" message="Upcoming" type="upcoming" />}
               <Typography variant="headline" className={classes.eventCardName}>
-                {name}
+                {name}<FavoriteButton event={this.props.event} />
               </Typography>
               <div className={classes.dashboardTime}>
                 {endTime !== undefined && `${this.props.intl.formatMessage(cardMessages.ends)}: ${getShortLocalDateTimeString(endTime)}`}
